@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Pomofocus</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">🍅 pomofocus</div>
+      <p class="tagline">stay locked in. one tomato at a time.</p>
+    </header>
+
+    <div class="auth-card">
+      <h2 class="auth-title">Get Started</h2>
+      <p class="auth-subtitle">Create your account and start focusing</p>
+
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label for="signupName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="signupName"
+            class="form-input"
+            placeholder="Enter your full name"
+            required
+          />
+          <span class="error-message" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail" class="form-label">Email</label>
+          <input
+            type="email"
+            id="signupEmail"
+            class="form-input"
+            placeholder="Enter your email"
+            required
+          />
+          <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword" class="form-label">Password</label>
+          <input
+            type="password"
+            id="signupPassword"
+            class="form-input"
+            placeholder="At least 6 characters"
+            required
+            minlength="6"
+          />
+          <span class="error-message" id="passwordError"></span>
+          <p class="password-hint">Must be at least 6 characters</p>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-input"
+            placeholder="Confirm your password"
+            required
+          />
+          <span class="error-message" id="confirmError"></span>
+        </div>
+
+        <div class="form-group checkbox">
+          <input
+            type="checkbox"
+            id="agreeTerms"
+            class="form-checkbox"
+            required
+          />
+          <label for="agreeTerms" class="checkbox-label">I agree to the Terms of Service</label>
+          <span class="error-message" id="termsError"></span>
+        </div>
+
+        <button type="submit" class="btn-auth">Create Account</button>
+        <span class="auth-message" id="signupMessage"></span>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <p class="auth-footer">
+        Already have an account?
+        <a href="login.html" class="auth-link">Sign in here</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Handle signup form submission
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleSignup();
+    });
+  </script>
+</body>
+</html>

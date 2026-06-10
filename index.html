@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="header-top">
+        <div class="logo">🍅 pomofocus</div>
+        <div class="user-menu">
+          <span class="user-name" id="userName">User</span>
+          <button class="btn-logout" onclick="logoutUser()" title="Logout">↪</button>
+        </div>
+      </div>
+      <p class="tagline">stay locked in. one tomato at a time.</p>
+    </header>
+
+    <div class="mode-tabs">
+      <button class="tab active" data-mode="work" onclick="switchMode('work')">Focus</button>
+      <button class="tab" data-mode="short" onclick="switchMode('short')">Short Break</button>
+      <button class="tab" data-mode="long" onclick="switchMode('long')">Long Break</button>
+    </div>
+
+    <div class="timer-card">
+      <div class="ring-wrapper">
+        <svg class="ring" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="88"/>
+          <circle class="ring-progress" id="ring" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="time-display" id="timeDisplay">25:00</div>
+      </div>
+
+      <div class="session-label" id="sessionLabel">Time to focus 🎯</div>
+
+      <!-- Task Input Box -->
+      <div class="task-box">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input"
+          placeholder="What are you working on?"
+          maxlength="60"
+        />
+        <div class="task-display" id="taskDisplay" style="display:none;">
+          <span id="taskText"></span>
+          <button class="task-clear" onclick="clearTask()">✕</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn-icon" onclick="resetTimer()" title="Reset">↺</button>
+        <button class="btn-main" id="startBtn" onclick="toggleTimer()">Start</button>
+        <button class="btn-icon" onclick="skipSession()" title="Skip">⏭</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num" id="sessionCount">0</span>
+        <span class="stat-label">Sessions Done</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="focusMinutes">0</span>
+        <span class="stat-label">Minutes Focused</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="breakCount">0</span>
+        <span class="stat-label">Breaks Taken</span>
+      </div>
+    </div>
+
+    <div class="tip-box" id="tipBox">
+      💡 <span id="tipText">Work in focused 25-min blocks for maximum productivity.</span>
+    </div>
+
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Check if user is logged in
+    window.addEventListener('DOMContentLoaded', function() {
+      if (!isUserLoggedIn()) {
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Display user name
+      const user = getCurrentUser();
+      if (user) {
+        document.getElementById('userName').textContent = user.name;
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

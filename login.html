@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Pomofocus</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">🍅 pomofocus</div>
+      <p class="tagline">stay locked in. one tomato at a time.</p>
+    </header>
+
+    <div class="auth-card">
+      <h2 class="auth-title">Welcome Back</h2>
+      <p class="auth-subtitle">Sign in to access your focus sessions</p>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">Email or Username</label>
+          <input
+            type="text"
+            id="loginEmail"
+            class="form-input"
+            placeholder="Enter your email or username"
+            required
+          />
+          <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input
+            type="password"
+            id="loginPassword"
+            class="form-input"
+            placeholder="Enter your password"
+            required
+          />
+          <span class="error-message" id="passwordError"></span>
+        </div>
+
+        <div class="form-group checkbox">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            class="form-checkbox"
+          />
+          <label for="rememberMe" class="checkbox-label">Remember me for 30 days</label>
+        </div>
+
+        <button type="submit" class="btn-auth">Sign In</button>
+        <span class="auth-message" id="loginMessage"></span>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <p class="auth-footer">
+        Don't have an account?
+        <a href="signup.html" class="auth-link">Create one here</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleLogin();
+    });
+
+    // Auto-fill if user was remembered
+    window.addEventListener('DOMContentLoaded', function() {
+      const remembered = localStorage.getItem('rememberMe');
+      if (remembered) {
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user) {
+          document.getElementById('loginEmail').value = user.email;
+          document.getElementById('rememberMe').checked = true;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
