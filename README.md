@@ -42,7 +42,7 @@ A beautiful, modern Pomodoro timer web application designed to help you stay foc
 ## 🚀 Getting Started
 
 ### Live Demo
-👉 **Visit:** [Your GitHub Pages URL](https://github.com/YOUR_USERNAME/pomodoro-timer)
+👉 **Visit:** [https://codewithparveen.github.io/Pomofocus/]
 
 ### Test Account
 ```
